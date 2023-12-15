@@ -1,8 +1,8 @@
 <?php
 namespace App\Controller;
-use App\Manager\ManagerRoles;
-class RolesController extends ManagerRoles{
-    public function addRoles(){
+use App\Manager\ManagerCategories;
+class CategoriesController extends ManagerCategories{
+    public function addCategories(){
         header('Access-Control-Allow-Origin: *, Content-Type : application/json');
         $json = file_get_contents("php://input");
         $code = 200;
@@ -11,7 +11,7 @@ class RolesController extends ManagerRoles{
             $data = json_decode($json, true);
             $this->setNom($data["nom"]);
             $this->create();
-            $message = ['ok'=>'Le Role a ete ajoute en BDD' ];
+            $message = ['ok'=>'Le Categorie a ete ajoute en BDD' ];
         }
         else{
             $code = 400;
@@ -20,7 +20,7 @@ class RolesController extends ManagerRoles{
         http_response_code($code);
         echo mb_convert_encoding(json_encode($message), "UTF-8", "UTF-8");
     }
-    public function findRolesById(){
+    public function findCategoriesById(){
         header('Access-Control-Allow-Origin: *, Content-Type : application/json');
         $code = 200;
         $message = "";
@@ -30,7 +30,7 @@ class RolesController extends ManagerRoles{
                 $message = $data;
             }
             else{
-                $message = ['error'=>'Le role n\'existe pas en BDD'];
+                $message = ['error'=>'La categorie n\'existe pas en BDD'];
                 $code = 400;
             }
         }
@@ -41,7 +41,7 @@ class RolesController extends ManagerRoles{
         http_response_code($code);
         echo mb_convert_encoding(json_encode($message), "UTF-8", "UTF-8");
     }
-    public function findAllRoles(){
+    public function findAllCategories(){
         header('Access-Control-Allow-Origin: *, Content-Type : application/json');
         $code = 200;
         $message = "";
@@ -52,13 +52,13 @@ class RolesController extends ManagerRoles{
             die; */
         }
         else{
-            $message = ['error'=>'Le role n\'existe pas en BDD'];
+            $message = ['error'=>'La categorie n\'existe pas en BDD'];
             $code = 400;
         }
         http_response_code($code);
         echo json_encode($message,JSON_UNESCAPED_UNICODE);
     }
-    public function updateRoles(){
+    public function updateCategories(){
         header('Access-Control-Allow-Origin: *, Content-Type : application/json');
         $json = file_get_contents("php://input");
         $code = 200;
@@ -68,7 +68,7 @@ class RolesController extends ManagerRoles{
             $id = $data["id"];
             $this->setNom($data["nom"]);
             $this->update($id);
-            $message = ['ok'=>'Le Role a ete mis a jour en BDD' ];
+            $message = ['ok'=>'La categorie a ete mis a jour en BDD' ];
         }
         else{
             $code = 400;
@@ -78,7 +78,7 @@ class RolesController extends ManagerRoles{
         echo mb_convert_encoding(json_encode($message), "UTF-8", mb_list_encodings());
     }
 
-    public function deleteRoles(){
+    public function deleteCategories(){
         header('Access-Control-Allow-Origin: *, Content-Type : application/json');
         $code = 200;
         $message = "";

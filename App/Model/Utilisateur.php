@@ -55,11 +55,11 @@ class Utilisateur extends BddConnect{
         $this->mail = $mail;
         return $this;
     }
-    public function SetMdp(string $mdp):self{
+    public function setMdp(string $mdp):self{
         $this->mdp = $mdp;
         return $this;
     }
-    public function SetdateNaissance(string $date):self{
+    public function setdateNaissance(string $date):self{
         $this->dateNaissance = $date;
         return $this;
     }
