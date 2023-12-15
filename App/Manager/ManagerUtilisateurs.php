@@ -68,6 +68,7 @@ class ManagerUtilisateurs extends Utilisateur implements ManagerInterface{
             
         }
         catch (\Throwable $th) {
+            echo $th->getCode();
             die($th->getCode());
         }
     }
